@@ -26,6 +26,9 @@ class SpotifyController:
     self.progressY = 1060
     self.progress100X = 1780
 
+    self.radioX = 200
+    self.radioY = 895
+
   def star(self):
     pyautogui.moveTo(self.titleX, self.titleY)
     pyautogui.click(button="right")
@@ -65,4 +68,15 @@ class SpotifyController:
     progressX = diff * progress + self.progress0X
     pyautogui.moveTo(progressX, self.progressY)
     pyautogui.click()
+
+  def radio(self):
+    pyautogui.moveTo(self.titleX, self.titleY)
+    pyautogui.click(button="right")
+    time.sleep(1)
+
+    pyautogui.moveTo(self.radioX, self.radioY)
+    pyautogui.click()
+    time.sleep(1)
+    
+    self.song()
 

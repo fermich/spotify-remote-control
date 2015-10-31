@@ -23,6 +23,8 @@ class GETHandler(BaseHTTPRequestHandler):
             GETHandler.controller.back()
         if self.path == "/star":
             GETHandler.controller.star()
+        if self.path == "/radio":
+            GETHandler.controller.radio()
         if self.path.startswith("/progress"):
             parsed = parse_qs(urlparse(self.path).query)
             value = int(parsed.get('v')[0])

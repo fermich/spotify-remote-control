@@ -9,6 +9,7 @@ class AppView:
             self.nl(self.action("next", "NEXT")) + 
             self.nl(self.action("back", "BACK")) +
             self.nl(self.action("star", "STAR")) +
+            self.nl(self.action("radio", "RADIO")) +
             self.nl(self.progressBar())
         )
 
