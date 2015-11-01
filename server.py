@@ -26,10 +26,14 @@ class GETHandler(BaseHTTPRequestHandler):
         if self.path == "/radio":
             GETHandler.controller.radio()
         if self.path.startswith("/progress"):
-            parsed = parse_qs(urlparse(self.path).query)
-            value = int(parsed.get('v')[0])
-            GETHandler.controller.jump(value)
+            GETHandler.controller.progress(self.getParamValue(self.path))
+        if self.path.startswith("/volume"):
+            GETHandler.controller.volume(self.getParamValue(self.path))
         self.showView()
+
+    def getParamValue(self, path):
+        parsed = parse_qs(urlparse(path).query)
+        return int(parsed.get('v')[0])
 
     def showView(self):
         page = appView.create()

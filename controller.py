@@ -26,6 +26,10 @@ class SpotifyController:
     self.progressY = 1060
     self.progress100X = 1780
 
+    self.volume0X = 190
+    self.volumeY = 1060
+    self.volume100X = 271
+
     self.radioX = 200
     self.radioY = 895
 
@@ -63,10 +67,16 @@ class SpotifyController:
     pyautogui.moveTo(self.buttonsX, self.buttonsY)
     pyautogui.click()
 
-  def jump(self, progress):
-    diff = (self.progress100X - self.progress0X) / 10
-    progressX = diff * progress + self.progress0X
-    pyautogui.moveTo(progressX, self.progressY)
+  def progress(self, value):
+    self.jump(value, self.progress0X, self.progress100X, self.progressY)
+
+  def volume(self, value):
+    self.jump(value, self.volume0X, self.volume100X, self.volumeY)
+
+  def jump(self, value, progress0X, progress100X, progressY):
+    diff = (progress100X - progress0X) / 10
+    progressX = diff * value + progress0X
+    pyautogui.moveTo(progressX, progressY)
     pyautogui.click()
 
   def radio(self):
